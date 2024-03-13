@@ -26,7 +26,6 @@ class ProjectHelper:
         # print(count)
         try:
             for n in range(3, count + 1):
-                # row = f'//table[@class="width100"][@cellspacing="1"]//tbody//tr[{n}]'
                 id = wd.find_element_by_xpath(f'//table[@class="width100"][2]//tbody//tr[{n}]//td//a').get_attribute(
                     'href')
                 id = str(id).split("=")[1]

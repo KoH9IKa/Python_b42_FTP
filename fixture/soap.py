@@ -10,7 +10,7 @@ class SoapHelper:
 
 
     def can_login(self, username, password):
-        client = Client('http://localhost/mantisbt-1.2.20/api/soap/mantisconnect.php?wsdl')
+        client = Client(self.app.config['web']['api-soap'])
         try:
             client.service.mc_login(username, password)
             return True
@@ -19,7 +19,7 @@ class SoapHelper:
 
     # вывод информации из ответа согласно модели Прожект
     def get_projects_for_user(self, username, password):
-        client = Client('http://localhost/mantisbt-1.2.20/api/soap/mantisconnect.php?wsdl')
+        client = Client(self.app.config['web']['api-soap'])
         try:
             data = client.service.mc_projects_get_user_accessible(username, password)
             list = []
@@ -46,7 +46,7 @@ class SoapHelper:
 
     # метод выдачи всего ответа что бы посмотреть что вообще приходит в ответе
     def get_projects_unstructured_data_for_user(self, username, password):
-        client = Client('http://localhost/mantisbt-1.2.20/api/soap/mantisconnect.php?wsdl')
+        client = Client(self.app.config['web']['api-soap'])
         try:
             response_data = client.service.mc_projects_get_user_accessible(username, password)
             return response_data

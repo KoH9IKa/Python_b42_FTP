@@ -1,5 +1,6 @@
 from sys import maxsize
 
+
 class Project:
 
     def __init__(self, id=None, name=None, status=None, inherit=None, enabled=None, view_status=None, description=None):
@@ -10,7 +11,6 @@ class Project:
         self.enabled = enabled
         self.view_status = view_status
         self.description = description
-
 
     def __repr__(self):
         return f'\n{self.id},{self.name},{self.status},{self.enabled},{self.view_status},{self.description}'

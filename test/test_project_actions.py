@@ -5,9 +5,10 @@ from model.project_model import Project
 
 proj_name_raw = datetime.now()
 
-def test_add_new_project(app):
-    username, password = "administrator", "root"
-    app.session.login(username, password)
+
+def test_add_new_project(app, data_creds):
+    user = data_creds
+    app.session.login(username=user.username, password=user.password)
     old_list = app.project.get_projects_list()
     proj_name = ("project " + str(proj_name_raw))[:-7]
     app.project.add_new_project(Project(name=proj_name))
@@ -18,8 +19,9 @@ def test_add_new_project(app):
     app.session.logout()
 
 
-def test_delete_project(app):
-    app.session.login("administrator", "root")
+def test_delete_project(app, data_creds):
+    user = data_creds
+    app.session.login(username=user.username, password=user.password)
     old_list = app.project.get_projects_list()
     index = randrange(len(old_list))
     app.project.delete_by_index(index)
