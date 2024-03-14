@@ -75,7 +75,7 @@ def stop(request):
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chromedriver")
-    parser.addoption("--target", action="store", default="target20.json")
+    parser.addoption("--target", action="store", default="target.json")
 
 
 def pytest_generate_tests(metafunc):
